@@ -11,7 +11,7 @@ There's still some boilerplate that has to go into your project `pom.xml`. Use t
   <parent>
     <groupId>com.spotify</groupId>
     <artifactId>foss-root</artifactId>
-    <version>2</version>
+    <version>3</version>
   </parent>
   
   <artifactId>YOUR_ARTIFACT_NAME</artifactId>
