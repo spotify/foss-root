@@ -10,14 +10,14 @@
 
   <groupId>com.spotify</groupId>
   <artifactId>foss-root</artifactId>
-  <version>1-SNAPSHOT</version>
+  <version>1</version>
   <packaging>pom</packaging>
 
   <scm>
     <url>https://github.com/spotify/foss-root</url>
     <connection>scm:git:git@github.com:spotify/foss-root.git</connection>
     <developerConnection>scm:git:git@github.com:spotify/foss-root.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>v1</tag>
   </scm>
 
   <licenses>
