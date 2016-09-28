@@ -41,12 +41,10 @@ There's still some boilerplate that has to go into your project `pom.xml`. Use t
   <build>
     <plugins>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>license-maven-plugin</artifactId>
+        <artifactId>maven-enforcer-plugin</artifactId>
       </plugin>
       <plugin>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>2.5.3</version>
+        <artifactId>maven-failsafe-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
@@ -56,7 +54,7 @@ There's still some boilerplate that has to go into your project `pom.xml`. Use t
 After setting this up, you'll be able to
 
 
-#### get license headers through
+#### add license headers to all sources
 
 ```
 mvn license:update-file-header
