@@ -11,7 +11,7 @@ There's still some boilerplate that has to go into your project `pom.xml`. Use t
   <parent>
     <groupId>com.spotify</groupId>
     <artifactId>foss-root</artifactId>
-    <version>3</version>
+    <version>4</version>
   </parent>
   
   <artifactId>YOUR_ARTIFACT_NAME</artifactId>
@@ -40,6 +40,9 @@ There's still some boilerplate that has to go into your project `pom.xml`. Use t
   
   <build>
     <plugins>
+      <plugin>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+      </plugin>
       <plugin>
         <artifactId>maven-enforcer-plugin</artifactId>
       </plugin>
