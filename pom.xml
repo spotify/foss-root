@@ -141,6 +141,7 @@
           <configuration>
             <configLocation>spotify_checks.xml</configLocation>
             <consoleOutput>true</consoleOutput>
+            <excludes>${project.build.directory}/generated-sources/**/*</excludes>
             <!-- Remove or switch to false to keep building even with checkstyle errors -->
             <failOnViolation>true</failOnViolation>
             <logViolationsToConsole>true</logViolationsToConsole>
