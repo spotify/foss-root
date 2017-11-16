@@ -10,7 +10,7 @@
 
   <groupId>com.spotify</groupId>
   <artifactId>foss-root</artifactId>
-  <version>8-SNAPSHOT</version>
+  <version>8</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -22,7 +22,7 @@
     <url>https://github.com/spotify/foss-root</url>
     <connection>scm:git:git@github.com:spotify/foss-root.git</connection>
     <developerConnection>scm:git:git@github.com:spotify/foss-root.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>v8</tag>
   </scm>
 
   <licenses>
