@@ -54,6 +54,16 @@ There's still some boilerplate that has to go into your project `pom.xml`. Use t
  </project>
 ```
 
+In addition, if you can build your project with Java 9+ (which probably means
+Java 11), then it's a good idea to set `maven.compiler.release` in your
+project, which will set up the boot classpath properly. For example:
+
+```xml
+<properties>
+  <maven.compiler.release>8</maven.compiler.release>
+</properties>
+```
+
 After setting this up, you'll be able to
 
 
