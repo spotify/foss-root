@@ -94,6 +94,9 @@
               <id>enforce</id>
               <configuration>
                 <rules>
+                  <requireMavenVersion>
+                    <version>[3.5.4,)</version>
+                  </requireMavenVersion>
                   <requireUpperBoundDeps />
                 </rules>
               </configuration>
@@ -234,7 +237,7 @@
               <execution>
                 <id>attach-sources</id>
                 <goals>
-                  <goal>jar</goal>
+                  <goal>jar-no-fork</goal>
                 </goals>
               </execution>
             </executions>
