@@ -18,6 +18,9 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven-test-plugins.version>3.1.2</maven-test-plugins.version>
+    <unitTests.failIfNoTests>true</unitTests.failIfNoTests>
+    <integrationTests.failIfNoTests>false</integrationTests.failIfNoTests>
   </properties>
 
   <scm>
@@ -107,24 +110,6 @@
               </goals>
             </execution>
           </executions>
-        </plugin>
-
-        <plugin>
-          <artifactId>maven-failsafe-plugin</artifactId>
-          <version>3.1.2</version>
-          <executions>
-            <execution>
-              <goals>
-                <goal>integration-test</goal>
-                <goal>verify</goal>
-              </goals>
-            </execution>
-          </executions>
-          <configuration>
-            <includes>
-              <include>**/*IT.java</include>
-            </includes>
-          </configuration>
         </plugin>
 
         <plugin>
@@ -317,6 +302,129 @@
               </goals>
             </execution>
           </executions>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${maven-test-plugins.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>me.fabriciorby</groupId>
+              <artifactId>maven-surefire-junit5-tree-reporter</artifactId>
+              <version>1.2.1</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <includes>
+              <include>**/*Test.java</include>
+              <include>**/*Tests.java</include>
+            </includes>
+            <excludes>
+              <exclude>**/*IT.java</exclude>
+              <exclude>**/integrationtests/*.java</exclude>
+              <exclude>**/it/**/*.java</exclude>
+            </excludes>
+            <testFailureIgnore>false</testFailureIgnore>
+            <failIfNoTests>${unitTests.failIfNoTests}</failIfNoTests>
+            <trimStackTrace>false</trimStackTrace>
+            <systemPropertyVariables>
+              <spotify.test.type>unit</spotify.test.type>
+              <spotify.target.dir>${project.build.directory}</spotify.target.dir>
+            </systemPropertyVariables>
+            <!--
+            For tree reporter in console:
+            https://github.com/fabriciorby/maven-surefire-junit5-tree-reporter
+            Full reports are still written in the `target/surefire-reports` folder
+            -->
+            <reportFormat>plain</reportFormat>
+            <statelessTestsetInfoReporter
+              implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporterUnicode">
+              <printStacktraceOnError>true</printStacktraceOnError>
+              <printStacktraceOnFailure>true</printStacktraceOnFailure>
+              <printStdoutOnError>true</printStdoutOnError>
+              <printStdoutOnFailure>true</printStdoutOnFailure>
+              <printStdoutOnSuccess>false</printStdoutOnSuccess>
+              <printStderrOnError>true</printStderrOnError>
+              <printStderrOnFailure>true</printStderrOnFailure>
+              <printStderrOnSuccess>false</printStderrOnSuccess>
+            </statelessTestsetInfoReporter>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>${maven-test-plugins.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>me.fabriciorby</groupId>
+              <artifactId>maven-surefire-junit5-tree-reporter</artifactId>
+              <version>1.2.1</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <trimStackTrace>false</trimStackTrace>
+            <failIfNoTests>${integrationTests.failIfNoTests}</failIfNoTests>
+            <!--
+            For tree reporter in console:
+            https://github.com/fabriciorby/maven-surefire-junit5-tree-reporter
+            Full reports are still written in the `target/surefire-reports` folder
+            -->
+            <reportFormat>plain</reportFormat>
+            <statelessTestsetInfoReporter
+              implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporterUnicode">
+              <printStacktraceOnError>true</printStacktraceOnError>
+              <printStacktraceOnFailure>true</printStacktraceOnFailure>
+              <printStdoutOnError>true</printStdoutOnError>
+              <printStdoutOnFailure>true</printStdoutOnFailure>
+              <printStdoutOnSuccess>false</printStdoutOnSuccess>
+              <printStderrOnError>true</printStderrOnError>
+              <printStderrOnFailure>true</printStderrOnFailure>
+              <printStderrOnSuccess>false</printStderrOnSuccess>
+            </statelessTestsetInfoReporter>
+          </configuration>
+          <executions>
+            <execution>
+              <id>integration-test</id>
+              <goals>
+                <goal>integration-test</goal>
+                <goal>verify</goal>
+              </goals>
+              <configuration>
+                <includes>
+                  <include>**/*IT.java</include>
+                  <include>**/integrationtests/*.java</include>
+                  <include>**/it/**/*.java</include>
+                </includes>
+                <excludes>
+                  <exclude>**/*ContainerIT.java</exclude>
+                </excludes>
+                <systemPropertyVariables>
+                  <spotify.test.type>integration</spotify.test.type>
+                  <spotify.target.dir>${project.build.directory}</spotify.target.dir>
+                </systemPropertyVariables>
+              </configuration>
+            </execution>
+            <execution>
+              <id>container-integration-test</id>
+              <goals>
+                <goal>integration-test</goal>
+                <goal>verify</goal>
+              </goals>
+              <configuration>
+                <includes>
+                  <include>**/*ContainerIT.java</include>
+                </includes>
+                <systemPropertyVariables>
+                  <spotify.test.type>container-integration</spotify.test.type>
+                  <spotify.target.dir>${project.build.directory}</spotify.target.dir>
+                </systemPropertyVariables>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>3.6.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
