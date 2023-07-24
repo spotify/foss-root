@@ -87,3 +87,11 @@ mvn deploy
 mvn release:prepare
 mvn release:perform
 ``` 
+
+#### Fail if no tests
+
+By default, from version 16+ any project using `foss-root` will fail if there are not unit-tests.
+
+You can override this behaviour by setting the property `unitTests.failIfNoTests` equal to `false`.
+
+An equivalent `integrationTests.failIfNoTests` exists, but its default is set to `false`.
