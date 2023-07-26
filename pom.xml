@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <name>Spotify Root</name>
@@ -12,7 +10,7 @@
 
   <groupId>com.spotify</groupId>
   <artifactId>foss-root</artifactId>
-  <version>16-SNAPSHOT</version>
+  <version>16</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -27,7 +25,7 @@
     <url>https://github.com/spotify/foss-root</url>
     <connection>scm:git:git@github.com:spotify/foss-root.git</connection>
     <developerConnection>scm:git:git@github.com:spotify/foss-root.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>v16</tag>
   </scm>
 
   <licenses>
@@ -102,7 +100,7 @@
                   <requireMavenVersion>
                     <version>[3.5.4,)</version>
                   </requireMavenVersion>
-                  <requireUpperBoundDeps/>
+                  <requireUpperBoundDeps />
                 </rules>
               </configuration>
               <goals>
@@ -337,8 +335,7 @@
             Full reports are still written in the `target/surefire-reports` folder
             -->
             <reportFormat>plain</reportFormat>
-            <statelessTestsetInfoReporter
-              implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporterUnicode">
+            <statelessTestsetInfoReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporterUnicode">
               <printStacktraceOnError>true</printStacktraceOnError>
               <printStacktraceOnFailure>true</printStacktraceOnFailure>
               <printStdoutOnError>true</printStdoutOnError>
@@ -369,8 +366,7 @@
             Full reports are still written in the `target/surefire-reports` folder
             -->
             <reportFormat>plain</reportFormat>
-            <statelessTestsetInfoReporter
-              implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporterUnicode">
+            <statelessTestsetInfoReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporterUnicode">
               <printStacktraceOnError>true</printStacktraceOnError>
               <printStacktraceOnFailure>true</printStacktraceOnFailure>
               <printStdoutOnError>true</printStdoutOnError>
