@@ -14,6 +14,9 @@
   <packaging>pom</packaging>
 
   <properties>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven-test-plugins.version>3.1.2</maven-test-plugins.version>
@@ -226,14 +229,6 @@
         <plugin>
           <artifactId>maven-source-plugin</artifactId>
           <version>3.3.0</version>
-          <executions>
-            <execution>
-              <id>attach-sources</id>
-              <goals>
-                <goal>jar-no-fork</goal>
-              </goals>
-            </execution>
-          </executions>
         </plugin>
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
@@ -433,10 +428,30 @@
         <plugins>
           <plugin>
             <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
           </plugin>
 
           <plugin>
             <artifactId>maven-javadoc-plugin</artifactId>
+            <configuration>
+              <show>private</show>
+              <failOnError>false</failOnError>
+            </configuration>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
           </plugin>
 
           <plugin>
@@ -456,8 +471,9 @@
         <jdk>1.8</jdk>
       </activation>
       <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
       </properties>
     </profile>
     <profile>
@@ -469,7 +485,8 @@
         <!-- Javac introduced the "release" option only in Java 9+.  It
           properly sets up source, target and boot classpath for the best
           compatibility with different versions of Java. -->
-        <maven.compiler.release>8</maven.compiler.release>
+        <java.version>8</java.version>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
       </properties>
     </profile>
   </profiles>
