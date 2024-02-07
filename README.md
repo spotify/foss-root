@@ -1,5 +1,9 @@
 # foss-root
 
+![Build status](https://github.com/spotify/foss-root/actions/workflows/maven.yml/badge.svg)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.spotify/foss-root/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.spotify/foss-root)
+![Lifecycle](https://img.shields.io/badge/lifecycle-production-1ed760.svg)
+
 A root pom for configuring common release related plugins for open source maven projects.
 
 ## Usage
