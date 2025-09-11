@@ -10,7 +10,7 @@
 
   <groupId>com.spotify</groupId>
   <artifactId>foss-root</artifactId>
-  <version>19-SNAPSHOT</version>
+  <version>18-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -454,8 +454,8 @@
           </plugin>
 
           <plugin>
-            <groupId>org.sonatype.central</groupId>
-            <artifactId>central-publishing-maven-plugin</artifactId>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
           </plugin>
 
           <plugin>
